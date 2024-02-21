@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="This is a project for learning introduction to web development">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Web Development">
+    <meta name="author" content="olhayeh">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME-OLKAweather</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- add button for locate this computer locate through ip address -->
+    <button class="locate-me">Locate Me</button>
+    
+    <!-- ui design for weather basic data -->
+    <div class="weather-basic">
+        <div class="weather-basic__location">
+            <h1 class="weather-basic__location--city">Lagos</h1>
+            <p class="weather-basic__location--country">Nigeria</p>
+        </div>
+        <div class="weather-basic__temperature">
+            <h1 class="weather-basic__temperature--value">30&deg;</h1>
+            <p class="weather-basic__temperature--description">Sunny</p>
+        </div>
+    </div>
+    <!-- ui design for weather details -->
+    <div class="weather-details">
+        <div class="weather-details__item">
+            <h1 class="weather-details__item--value">30&deg;</h1>
+            <p class="weather-details__item--description">Feels Like</p>
+        </div>
+        <div class="weather-details__item">
+            <h1 class="weather-details__item--value">30&deg;</h1>
+            <p class="weather-details__item--description">High</p>
+        </div>
+        <div class="weather-details__item">
+            <h1 class="weather-details__item--value">30&deg;</h1>
+            <p class="weather-details__item--description">Low</p>
+        </div>
+        <div class="weather-details__item">
+            <h1 class="weather-details__item--value">30&deg;</h1>
+            <p class="weather-details__item--description">Wind</p>
+        </div>
+        <div class="weather-details__item">
+            <h1 class="weather-details__item--value">30&deg;</h1>
+            <p class="weather-details__item--description">Humidity</p>
+        </div>
+    </div>
+    <!-- ui design for weather forecast -->
+    <div class="weather-forecast">
+        <div class="weather-forecast__item">
+            <h1 class="weather-forecast__item--day">Mon</h1>
+            <p class="weather-forecast__item--temperature">30&deg;</p>
+        </div>
+        <div class="weather-forecast__item">
+            <h1 class="weather-forecast__item--day">Tue</h1>
+            <p class="weather-forecast__item--temperature">30&deg;</p>
+        </div>
+        <div class="weather-forecast__item">
+            <h1 class="weather-forecast__item--day">Wed</h1>
+            <p class="weather-forecast__item--temperature">30&deg;</p>
+        </div>
+        <div class="weather-forecast__item">
+            <h1 class="weather-forecast__item--day">Thu</h1>
+            <p class="weather-forecast__item--temperature">30&deg;</p>
+        </div>
+        <div class="weather-forecast__item">
+            <h1 class="weather-forecast__item--day">Fri</h1>
+            <p class="weather-forecast__item--temperature">30&deg;</p>
+        </div>
+    </div>
+    <!-- ui design for weather search -->
+    <div class="weather-search">
+        <input type="text" class="weather-search__input" placeholder="Search for a city">
+        <button class="weather-search__button">Search</button>
+    </div>
+    <!-- ui design for weather footer -->
+    <div class="weather-footer">
+        <p class="weather-footer__text">OlkaWeather &copy; 2021</p>
+    </div>
+
+</body>
+<script src="js/script.js"></script>
+</html>
