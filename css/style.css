@@ -1,1 +1,218 @@
-/* ui design for weather ui design  */
+
+
+/* added roboto mono font family  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Roboto Mono", monospace;
+  font-size: 20px;
+  font-weight: 500;
+  
+}
+
+body{
+  padding: 20px 50px;
+  margin: 0;
+  padding: 0;
+  background-color: #199ef638;
+  box-sizing: border-box;
+}
+
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 50px;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.nav{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background-color: transparent;
+  color: white;
+}
+.nav .nav-title{
+  font-size: 36px;
+  font-weight: 500;
+  color: black;
+}
+.weather-footer__text {
+  font-size: 20px;
+  font-weight: 500;
+  color: black;
+}
+.weather-search {
+	width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 50px;
+  background-color: transparent;
+  color: white;
+}
+.weather_input_list {
+    list-style-type:none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.weather_input_list li {
+    margin: 0 10px;
+}
+.weather_input_list li input {
+	background-color: #D9D9D9;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+}
+.weather_input_list li input[type="text"] {
+    width: 565px;	
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: black;
+}
+.weather_input_list li button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #D9D9D9;
+  cursor: pointer;
+}
+.weather_input_list li button:hover {
+  background-color: #000;
+  color: #fff;
+}
+.weather_input_list li .weather-search__unit{	
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  color: black;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right .7em top 50%, 0 0;
+  background-size: 1.9em auto;
+  background-color: #D9D9D9;
+}
+
+.weather_ui{
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+  padding: 20px 50px;
+}
+
+.weather_basic {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	column-gap: 5px;
+	padding: 20px 50px;
+	background-color: #18A0FB;
+	width: 100%;
+	border-radius: 20px;
+  }
+  
+.weather_basic .weather_basic_location {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.weather_basic .weather_basic_location .weather_basic_location_city{
+  font-weight: 500;
+  font-size: 36px;
+}
+.weather_basic .weather_basic_temperature{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+.weather_basic .weather_basic_temperature .weather_basic_temperature_value{
+  font-weight: 500;
+  font-size: 64px;
+}
+.weather_basic  .weather_basic_temperature_description{
+  font-weight: 500;
+  font-size: 64px;
+}
+
+.weather_basic .weather_basic_high_low{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-weight: 500;
+	font-size: 24px;
+	width: 100%;
+}
+.weather_basic .weather_basic_high_low .weather_basic_high h1{
+	font-size: 64px;
+	font-weight: 500;
+
+}
+.weather_basic .weather_basic_high_low .weather_basic_low h1{
+	font-size: 64px;
+	font-weight: 500;
+}
+
+.weather_details{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 20px 50px;
+	
+}
+.weather_details .weather_details_item_groupe{
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-gap: 20px;
+
+}
+.weather_details .weather_details_item_groupe .weather_details_item{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px 50px;
+  background-color: #18A0FB;
+  color: white;
+  border-radius: 10px;
+}
+.weather_details .weather_details_item h6{
+	  font-weight: 500;
+  font-size: 24px;
+}

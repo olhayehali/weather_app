@@ -6,81 +6,163 @@
     <meta name="keywords" content="HTML, CSS, JavaScript, Web Development">
     <meta name="author" content="olhayeh">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- title name inspired by my name -->
     <title>HOME-OLKAweather</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!-- added icon for the website -->
+    <link rel="icon" href="icon/02d@2x.png" type="image/x-icon">
+    <!-- added font awesome because its simple and awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-    <!-- add button for locate this computer locate through ip address -->
-    <button class="locate-me">Locate Me</button>
+<!-- laoding icon -->
+<!-- loading elements with css inside element  -->
+<div class="loading" id="loading" style="width: 100px;height: 100px; position: absolute;top: 1px;left: 50%;z-index: 5;display: none;">
+    <!-- loading icon in black font awesome -->
+    <i class="fas fa-spinner fa-spin" style="font-size: 50px;color: black;"></i>
+</div>
+<!-- navigation with title  -->
+<nav class="nav">
+    <span class="nav-title">OlkaWeather</span>
+</nav>    
+<div class="body">
     
-    <!-- ui design for weather basic data -->
-    <div class="weather-basic">
-        <div class="weather-basic__location">
-            <h1 class="weather-basic__location--city">Lagos</h1>
-            <p class="weather-basic__location--country">Nigeria</p>
-        </div>
-        <div class="weather-basic__temperature">
-            <h1 class="weather-basic__temperature--value">30&deg;</h1>
-            <p class="weather-basic__temperature--description">Sunny</p>
-        </div>
-    </div>
-    <!-- ui design for weather details -->
-    <div class="weather-details">
-        <div class="weather-details__item">
-            <h1 class="weather-details__item--value">30&deg;</h1>
-            <p class="weather-details__item--description">Feels Like</p>
-        </div>
-        <div class="weather-details__item">
-            <h1 class="weather-details__item--value">30&deg;</h1>
-            <p class="weather-details__item--description">High</p>
-        </div>
-        <div class="weather-details__item">
-            <h1 class="weather-details__item--value">30&deg;</h1>
-            <p class="weather-details__item--description">Low</p>
-        </div>
-        <div class="weather-details__item">
-            <h1 class="weather-details__item--value">30&deg;</h1>
-            <p class="weather-details__item--description">Wind</p>
-        </div>
-        <div class="weather-details__item">
-            <h1 class="weather-details__item--value">30&deg;</h1>
-            <p class="weather-details__item--description">Humidity</p>
-        </div>
-    </div>
-    <!-- ui design for weather forecast -->
-    <div class="weather-forecast">
-        <div class="weather-forecast__item">
-            <h1 class="weather-forecast__item--day">Mon</h1>
-            <p class="weather-forecast__item--temperature">30&deg;</p>
-        </div>
-        <div class="weather-forecast__item">
-            <h1 class="weather-forecast__item--day">Tue</h1>
-            <p class="weather-forecast__item--temperature">30&deg;</p>
-        </div>
-        <div class="weather-forecast__item">
-            <h1 class="weather-forecast__item--day">Wed</h1>
-            <p class="weather-forecast__item--temperature">30&deg;</p>
-        </div>
-        <div class="weather-forecast__item">
-            <h1 class="weather-forecast__item--day">Thu</h1>
-            <p class="weather-forecast__item--temperature">30&deg;</p>
-        </div>
-        <div class="weather-forecast__item">
-            <h1 class="weather-forecast__item--day">Fri</h1>
-            <p class="weather-forecast__item--temperature">30&deg;</p>
-        </div>
-    </div>
-    <!-- ui design for weather search -->
-    <div class="weather-search">
-        <input type="text" class="weather-search__input" placeholder="Search for a city">
-        <button class="weather-search__button">Search</button>
-    </div>
-    <!-- ui design for weather footer -->
-    <div class="weather-footer">
-        <p class="weather-footer__text">OlkaWeather &copy; 2021</p>
+    <!--  weather search -->
+    <div class="weather-search" >
+        <!-- form for search a city input and search button -->
+        <ul class="weather_input_list">
+            <li>
+                <form class="weather-search__form">
+                    <input type="text"   id="city_input" class="weather-search__input" placeholder="Search for a city">
+                    <input type="submit" id="submit" class="weather-search__button" value="Search">
+                </form>
+            </li>
+            <li>
+                <button class="locate-me" id="locate_me">
+                    <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                </button>        
+            </li>
+            <li>
+                <!-- filter for metric or imperial or standart -->
+                <select name="unit" id="units" class="weather-search__unit">
+                    <option value="imperial">Imperial</option>
+                    <option value="metric">Metric</option>
+                    <option value="standard">standard</option>
+                </select>
+            </li>
+        </ul>
     </div>
 
+    <!-- weather ui -->
+    <div  id="weather_ui" class="weather_ui">
+        <!--  weather basic data -->
+        <div class="weather_basic" >
+
+            <div class="weather_basic_location">
+                <h1 class="weather_basic_location_city" id="city" >minneapolis</h1>
+            </div>
+
+            <div class="weather_basic_temperature">
+                <p class="weather_basic_temperature_value" id="temp" >30&deg;</p>
+            </div>            
+
+            <div class="weather_basic_description">
+                <img src="icon/02d@2x.png" alt="cloudy" id="icon" class="weather_basic__temperature_icon">
+                <p class="weather_basic_description_text" id="desc">broken cloud</p>
+            </div>
+            
+            <!-- high and low temp -->
+            <div class="weather_basic_high_low">
+                <div class="weather_basic_high" >
+                    <i class="fa-solid fa-temperature-arrow-up"></i>
+                    <h1 id="temp_max">H:50&deg;</h1>
+                </div>
+                <div class="weather_basic_low" >
+                    <i class="fa-solid fa-temperature-arrow-down"></i>
+                    <h1 id="temp_min">L:44&deg;</h1>
+                </div>
+            </div>
+        </div>
+        <!--   weather details -->
+        <div class="weather_details">
+            
+            <div class="weather_details_item_groupe">
+                <div class="weather_details_item">
+                    <p class="weather_details_item--description">Wind</p>
+                    <h1 class="weather_details_item--value"  >
+                        <i class="fas fa-wind"></i> 
+                        <span id="wind_speed" id="wind_speed">3km/h</span>
+                        <br>
+                        <i class="fas fa-compass"></i>
+                        <span id="wind_direction" id="wind_direction">170°</span>
+                    </h1>
+                </div>
+                <div class="weather_details_item">
+                    <p class="weather_details_item--description">
+                        <i class="fas fa-thermometer-half"></i>
+                        Feels Like
+                    </p>
+                    <h1 class="weather_details_item--value" id="feels_like" >30&deg;</h1>
+                    <h6 id="feel_desc">wind is making it feel cooler</h6>
+                </div>
+                <div class="weather_details_item">
+                    <p class="weather_details_item--description" >
+                        <i class="fas fa-sun"></i>
+                        SunRise
+                    </p>
+                    <h1 class="weather_details_item--value" id="sunrise">7:03AM</h1>
+                    <p class="weather_details_item--description">
+                        <i class="fas fa-moon"></i>
+                        SunSet
+                    </p>
+                    <h1 class="weather_details_item--value" id="sunset">5:49PM</h1>
+                </div>
+                <div class="weather_details_item">
+                    <p class="weather_details_item--description">
+                        <i class="fas fa-tachometer-alt"></i>
+                        Pressure
+                    </p>
+                    <h1 class="weather_details_item--value" id="pressure">1011 HPa </h1>
+                </div>
+                <div class="weather_details_item">
+                    <p class="weather_details_item--description">
+                        <i class="fas fa-tint"></i>
+                        Humidity
+                    </p>
+                    <h1 class="weather_details_item--value" id="humidity">37%</h1>
+                </div>
+                <div class="weather_details_item">
+                    <p class="weather_details_item--description">        
+                        <i class="fas fa-eye"></i>
+                        Visibility
+                    </p>
+                    <h6 class="weather_details_item--value" id="visibility" >30&deg;</h6>    
+                </div>
+            </div>
+        </div>
+        <!--  weather footer -->
+        <div class="weather-footer">
+            <p class="weather-footer__text">OlkaWeather &copy; 2021</p>
+        </div>
+    </div>
+</div>
+
 </body>
+
+<!-- 
+    jquery 
+    i used jquery because i had problem with fetch and jquery seam easy , powerfull ,commonly used and well documented
+-->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" ></script>
+<!-- added two javascript file 
+    1. data_function.js
+    2. script.js
+    i used two file to simplify the code and make it more readable and maintainable
+-->
+<!-- 
+    data_function file contain all variable and function for getting data from openweather api
+    script file contain all the event listener and function for the ui 
+ -->
+<script src="js/data_function.js"></script>
 <script src="js/script.js"></script>
 </html>
