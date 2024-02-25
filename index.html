@@ -21,6 +21,29 @@
     <!-- loading icon in black font awesome -->
     <i class="fas fa-spinner fa-spin" style="font-size: 50px;color: black;"></i>
 </div>
+
+<!-- poup info card for city no found -->
+<div class="popup" id="popup" >
+    <div class="popup_content">
+        <h1 class="popup_content_title">City Not Found</h1>
+        <p class="popup_content_text">Please enter a valid city name</p>
+        <button class="popup_content_button" id="popup_button" onclick="document.getElementById('popup').style.display='none'">OK</button>
+    </div>  
+</div>
+
+<!-- menu for show multiple city found  -->
+<div class="menu" id="menu"  style="display: none;">
+    <div class="menu_content">
+        <h1 class="menu_content_title">Multiple City Found</h1>
+        <ul class="menu_content_list" id="menu_list">
+            <li class="menu_content_list_item">
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+
 <!-- navigation with title  -->
 <nav class="nav">
     <span class="nav-title">OlkaWeather</span>
@@ -54,7 +77,7 @@
     </div>
 
     <!-- weather ui -->
-    <div  id="weather_ui" class="weather_ui">
+    <div  id="weather_ui" style="display: none;" class="weather_ui">
         <!--  weather basic data -->
         <div class="weather_basic" >
 

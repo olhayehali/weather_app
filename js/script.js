@@ -26,25 +26,3 @@ submit.addEventListener("click", function(event) {
     }
 });
 
-// //listen to change of units to automatically update the weather
-// units.addEventListener("change", function(event) {
-//     //check if city is empty
-//     if(city_input.value != "" )
-//     {
-//         loading.style.display= "block";
-//         //get weather with city provided
-//         getWeather();
-//     }
-//     else if(city.innerHTML != "")
-//     {
-//         loading.style.display= "block";
-//         //get geolocation
-//         get_geolocation();
-//     }
-//     else
-//     {
-//         alert("Please provide a city");   
-//     }
-// });
-
-

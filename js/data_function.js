@@ -7,6 +7,9 @@ var submit = document.getElementById("submit");
 var units = document.getElementById("units");
 var locate_me = document.getElementById("locate_me");
 var loading = document.getElementById("loading");
+var popup = document.getElementById("popup");
+var menu = document.getElementById("menu");
+var citys ;
 
 var weather_ui = document.getElementById("weather_ui");
 
@@ -94,7 +97,6 @@ function time_covert(time) {
     return formattedTime;
 }
 
-
 //get geolocation and display weather data
 //ask for permission to get geolocation
 
@@ -105,27 +107,7 @@ function get_geolocation() {
         {
             var lat = position.coords.latitude;
             var lon = position.coords.longitude;
-            let url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid="+ api_key +"&units="+units.value
-            //jquery get
-            $.get(url, function(data) {
-                city.innerHTML = data.name+", " + data.sys.country;
-                temp.innerHTML = Math.floor(data.main.temp)+ unit_giver(units.value)[0];
-                desc.innerHTML = data.weather[0].description;
-                icon.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
-                max_temp.innerHTML = "H:"+Math.floor(data.main.temp_max)+ unit_giver(units.value)[0];
-                min_temp.innerHTML = "L:"+Math.floor(data.main.temp_min)+ unit_giver(units.value)[0];
-                wind_speed.innerHTML = data.wind.speed+" "+unit_giver(units.value)[1];
-                wind_direction.innerHTML = degToCompass(data.wind.deg);
-                feels_like.innerHTML = Math.floor(data.main.feels_like)+ unit_giver(units.value)[0];
-                feel_desc.innerHTML = "Feels like" + data.weather[0].description + " " ;
-                sunrise.innerHTML = time_covert(data.sys.sunrise);
-                sunset.innerHTML = time_covert(data.sys.sunset);
-                pressure.innerHTML = data.main.pressure+" "+unit_giver(units.value)[2];
-                humidity.innerHTML = data.main.humidity+"%";
-                visibility.innerHTML = visibility_max_value(data.visibility)+ "m <br>"+visibility_max(data.visibility);
-                $(weather_ui).fadeIn(100);
-                loading.style.display= "none";
-            } );                   
+            getData(lat, lon, units, api_key);
         },
         function(error) {
             alert("Error: " + error.message);
@@ -138,44 +120,72 @@ function get_geolocation() {
     }
 }
 
+
+function getData(lat, lon, units, api_key) {
+    let url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid="+ api_key +"&units="+ units.value;
+    $.get(url, function(data) {
+        city.innerHTML = data.name+ ", " + data.sys.country;
+        temp.innerHTML = Math.floor(data.main.temp)+ unit_giver(units.value)[0];
+        desc.innerHTML = data.weather[0].description;
+        icon.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
+        max_temp.innerHTML = "H:"+data.main.temp_max+  unit_giver(units.value)[0];
+        min_temp.innerHTML = "L:"+data.main.temp_min+  unit_giver(units.value)[0];
+        wind_speed.innerHTML = data.wind.speed+" "+unit_giver(units.value)[1];
+        wind_direction.innerHTML = degToCompass(data.wind.deg);
+        feels_like.innerHTML = data.main.feels_like+ unit_giver(units.value)[0];
+        feel_desc.innerHTML = "Feels like" + data.weather[0].description + " " ;
+        sunrise.innerHTML = time_covert(data.sys.sunrise);
+        sunset.innerHTML = time_covert(data.sys.sunset);
+        pressure.innerHTML = data.main.pressure+" "+unit_giver(units.value)[2];
+        humidity.innerHTML = data.main.humidity+"%";
+        visibility.innerHTML = visibility_max_value(data.visibility) + "m <br>"+visibility_max(data.visibility);
+        $(weather_ui).fadeIn(100);
+        loading.style.display= "none";
+    });
+}
+
+//if got more city
+function MoreCity(elements) {
+    citys = elements;
+    menu.style.display = "block";
+    $( ".menu_content_list" ).empty();
+    elements.forEach((element,index)  => {        
+        $( ".menu_content_list" ).append( "<li class='menu_content_list_item' id='"+index+"'><p class='menu_content_list_item_text' id='menu_item_text'><span>"+element.name+"</span><span> ,"+element.country+"</span></p></li>");
+    });
+    $(".menu_content_list_item").click(function(e) {
+        menu.style.display = "none";
+        var id = e.target.id;
+        city_input.value = citys[id].name;
+        var lat = citys[id].lat;
+        var lon = citys[id].lon;
+        loading.style.display= "block";
+        getData(lat, lon, units, api_key);
+        citys.empty();
+    });    
+    loading.style.display= "none";
+    return
+}
+
 //get weather data based on city provided
 
-function getWeather() {
+function getWeather(first_time = true) {
     let url = "https://api.openweathermap.org/geo/1.0/direct?q=" + city_input.value + "&limit=5&appid="+ api_key +"&units="+ units.value;
-    var response = $.get(url, function(data) {
+    $.get(url, function(data) {
         if (data.length == 0) {
-            alert("City not found");
+            popup.style.display = "block";
+            city_input.value = "";
             loading.style.display= "none";
             return;
         }
-        else if (data.length > 1) {
+        else if (data.length > 1 && first_time == true) {
+            MoreCity(data);
+            return;
+        }
+        else if(data.length == 1){
             var lat = data[0].lat;
             var lon = data[0].lon;
-            var country = data[0].country;
+            getData(lat, lon, units, api_key);
+            return;           
         }
-        else {
-            var lat = data[0].lat;
-            var lon = data[0].lon;
-        }
-        let url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid="+ api_key +"&units="+ units.value;
-        $.get(url, function(data) {
-            city.innerHTML = data.name+ ", " + data.sys.country;
-            temp.innerHTML = Math.floor(data.main.temp)+ unit_giver(units.value)[0];
-            desc.innerHTML = data.weather[0].description;
-            icon.src = "http://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
-            max_temp.innerHTML = "H:"+data.main.temp_max+  unit_giver(units.value)[0];
-            min_temp.innerHTML = "L:"+data.main.temp_min+  unit_giver(units.value)[0];
-            wind_speed.innerHTML = data.wind.speed+" "+unit_giver(units.value)[1];
-            wind_direction.innerHTML = degToCompass(data.wind.deg);
-            feels_like.innerHTML = data.main.feels_like+ unit_giver(units.value)[0];
-            feel_desc.innerHTML = "Feels like" + data.weather[0].description + " " ;
-            sunrise.innerHTML = time_covert(data.sys.sunrise);
-            sunset.innerHTML = time_covert(data.sys.sunset);
-            pressure.innerHTML = data.main.pressure+" "+unit_giver(units.value)[2];
-            humidity.innerHTML = data.main.humidity+"%";
-            visibility.innerHTML = visibility_max_value(data.visibility) + "m <br>"+visibility_max(data.visibility);
-            $(weather_ui).fadeIn(100);
-            loading.style.display= "none";
-        } );
-    });
+});
 }
