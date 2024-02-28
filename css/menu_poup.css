@@ -1,0 +1,106 @@
+/* popup design */
+.popup {
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 30%;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  .popup .popup_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 0px;
+    background-color: var(--background-color-3);
+    color: white;
+    border-radius: 10px;
+  }
+  .popup .popup_content h1{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    font-weight: 500;
+    color: black;
+  }
+  
+  .popup .popup_content button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    font-weight: 500;
+    color: #fff;
+    background-color: var(--background-color);
+    cursor: pointer;
+  }
+  .popup .popup_content button:hover {
+    background-color: #000;
+    color: #fff;
+  }
+  
+  
+  .menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 5px;
+    color: white;
+    height: fit-content;
+    width: 50%;
+    position: fixed;
+    top: 20%;
+    left: 25%;
+    z-index: 3;  
+  }
+  .menu .menu_content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--background-color-3);
+    padding: 20px 20px;
+  }
+  .menu .menu_content .menu_content_title{
+    font-size: 36px;
+    font-weight: 500;
+    color: black;
+  }
+  .menu .menu_content .menu_content_list{
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+  .menu .menu_content .menu_content_list .menu_content_list_item{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
+      padding: 10px 30px;
+      border-radius: 20px;
+  }
+  .menu .menu_content .menu_content_list .menu_content_list_item:hover{
+    background-color: var(--background-color);
+    color: black;
+  }
+  
+  .menu .menu_content .menu_content_list .menu_content_list_item .menu_content_list_item_text{
+      font-weight: 500;
+      font-size: 24px;
+    cursor:  default;
+  }
+  

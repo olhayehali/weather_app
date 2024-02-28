@@ -9,20 +9,17 @@ locate_me.addEventListener("click", function(event) {
 
 submit.addEventListener("click", function(event) {
     event.preventDefault();
-
-
     //check if city_input is empty
     if(city_input.value != "")
     {
     //show loading spinner while waiting for the weather
     loading.style.display= "block";
-
     //get weather with city provided
     getWeather();
     }
     else
     {
-        alert("Please provide a city");   
+        popup.style.display= "block";
     }
 });
 

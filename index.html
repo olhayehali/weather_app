@@ -9,6 +9,8 @@
     <!-- title name inspired by my name -->
     <title>HOME-OLKAweather</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu_poup.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <!-- added icon for the website -->
     <link rel="icon" href="icon/02d@2x.png" type="image/x-icon">
     <!-- added font awesome because its simple and awesome  -->
@@ -23,10 +25,10 @@
 </div>
 
 <!-- poup info card for city no found -->
-<div class="popup" id="popup" >
+<div class="popup" id="popup" style="display:none;" >
     <div class="popup_content">
-        <h1 class="popup_content_title">City Not Found</h1>
-        <p class="popup_content_text">Please enter a valid city name</p>
+        <h1 class="popup_content_title">City Not Found </h1>
+        <p class="popup_content_text">Please enter a valid city name </p>
         <button class="popup_content_button" id="popup_button" onclick="document.getElementById('popup').style.display='none'">OK</button>
     </div>  
 </div>
@@ -34,10 +36,9 @@
 <!-- menu for show multiple city found  -->
 <div class="menu" id="menu"  style="display: none;">
     <div class="menu_content">
-        <h1 class="menu_content_title">Multiple City Found</h1>
+        <h1 class="menu_content_title">Multiple City Found </h1>
         <ul class="menu_content_list" id="menu_list">
             <li class="menu_content_list_item">
-
             </li>
         </ul>
     </div>
@@ -49,31 +50,26 @@
     <span class="nav-title">OlkaWeather</span>
 </nav>    
 <div class="body">
-    
     <!--  weather search -->
-    <div class="weather-search" >
+    <div class="weather_search" >
         <!-- form for search a city input and search button -->
-        <ul class="weather_input_list">
-            <li>
-                <form class="weather-search__form">
-                    <input type="text"   id="city_input" class="weather-search__input" placeholder="Search for a city">
-                    <input type="submit" id="submit" class="weather-search__button" value="Search">
-                </form>
-            </li>
-            <li>
-                <button class="locate-me" id="locate_me">
-                    <i class="fa fa-location-arrow" aria-hidden="true"></i>
+        <div class="weather_input_list">
+            <form class="weather_search_form">
+                <input type="text"   id="city_input" class="weather_search_input" placeholder="Search for a city">
+                <input type="submit" id="submit" class="weather_search_button" value="Search">
+            </form>
+            <div class="button_filter_container">
+                <button class="locate_me" id="locate_me">
+                    <i class="fa fa-location-arrow" style="color: black;" aria-hidden="true"></i>
                 </button>        
-            </li>
-            <li>
                 <!-- filter for metric or imperial or standart -->
-                <select name="unit" id="units" class="weather-search__unit">
+                <select name="unit" id="units" class="weather_search_unit">
                     <option value="imperial">Imperial</option>
                     <option value="metric">Metric</option>
                     <option value="standard">standard</option>
-                </select>
-            </li>
-        </ul>
+                </select>                
+            </div>
+        </div>
     </div>
 
     <!-- weather ui -->
@@ -111,11 +107,13 @@
             
             <div class="weather_details_item_groupe">
                 <div class="weather_details_item">
-                    <p class="weather_details_item--description">
+                    <p class="weather_details_item_description">
                         <i class="fas fa-wind"></i>
                         Wind
                     </p>
                     <div class="weather_details_item--value" >
+                        <!-- clock icon -->
+                        <i class="fas fa-tachometer-alt"></i>
                         <span id="wind_speed" id="wind_speed">3km/h</span>
                         <br>
                         <i class="fas fa-compass"></i>
@@ -123,7 +121,7 @@
                     </div>
                 </div>
                 <div class="weather_details_item">
-                    <p class="weather_details_item--description">
+                    <p class="weather_details_item_description">
                         <i class="fas fa-thermometer-half"></i>
                         Feels Like
                     </p>
@@ -131,33 +129,33 @@
                     <p id="feel_desc">wind is making it feel cooler</p>
                 </div>
                 <div class="weather_details_item">
-                    <p class="weather_details_item--description" >
+                    <p class="weather_details_item_description" >
                         <i class="fas fa-sun"></i>
                         SunRise
                     </p>
                     <h1 class="weather_details_item--value" id="sunrise">7:03AM</h1>
-                    <p class="weather_details_item--description">
+                    <p class="weather_details_item_description">
                         <i class="fas fa-moon"></i>
                         SunSet
                     </p>
                     <h1 class="weather_details_item--value" id="sunset">5:49PM</h1>
                 </div>
                 <div class="weather_details_item">
-                    <p class="weather_details_item--description">
+                    <p class="weather_details_item_description">
                         <i class="fas fa-tachometer-alt"></i>
                         Pressure
                     </p>
                     <h1 class="weather_details_item--value" id="pressure">1011 HPa </h1>
                 </div>
                 <div class="weather_details_item">
-                    <p class="weather_details_item--description">
+                    <p class="weather_details_item_description">
                         <i class="fas fa-tint"></i>
                         Humidity
                     </p>
                     <h1 class="weather_details_item--value" id="humidity">37%</h1>
                 </div>
                 <div class="weather_details_item">
-                    <p class="weather_details_item--description">        
+                    <p class="weather_details_item_description">        
                         <i class="fas fa-eye"></i>
                         Visibility
                     </p>
@@ -166,8 +164,8 @@
             </div>
         </div>
         <!--  weather footer -->
-        <div class="weather-footer">
-            <p class="weather-footer__text">OlkaWeather &copy; 2024</p>
+        <div class="weather_footer">
+            <p class="weather_footer_text">OlkaWeather &copy; 2024</p>
         </div>
     </div>
 </div>
