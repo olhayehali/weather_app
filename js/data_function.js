@@ -65,7 +65,7 @@ function visibility_max(visibility) {
     }
 }
 
-//function to give units based on the selected unit
+//this function give unit to data based on the unit selected by the user
 function unit_giver() {
     switch(units.value) {
         case "imperial":
@@ -77,29 +77,17 @@ function unit_giver() {
     }
 }
 
-//convert hpa to inhg for user friendly display of pressure in inches of mercury
-function hpa_to_inhg(hpa) {
-    return hpa * 0.02953;
-}
-
 //convert unix time to user friendly time
-function time_covert(time) {
-    var date = new Date(time * 1000);
-    var hours = date.getHours();
-    var minutes = "0" + date.getMinutes();
-    //format time to 12 hour clock
-    if (hours > 12) {
-        hours = hours - 12;
-        var formattedTime = hours + ':' + minutes.substr(-2)+ " PM";
-        return formattedTime;    
-    }
-    var formattedTime = hours + ':' + minutes.substr(-2)+ " AM";
-    return formattedTime;
+//used moment js to convert time
+//moment js is a library for parsing, validating, manipulating, and formatting dates
+function time_covert(time,timezone=0) {
+    let x = moment.utc(time,'X').add(timezone,'seconds').format('HH:mm a');
+    return x;
 }
 
 //get geolocation and display weather data
 //ask for permission to get geolocation
-
+//work only with localhost or https .on my computer i was able to get self-signed certificate to test for https
 function get_geolocation() {
     if (navigator.geolocation) 
     {
@@ -121,6 +109,10 @@ function get_geolocation() {
 }
 
 
+//this function render date to the user based on the data received from the api
+// i was able to get data either from geolocation or city provided
+//this function call some other function to convert the data to user friendly data
+
 function getData(lat, lon, units, api_key) {
     let url = "https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&appid="+ api_key +"&units="+ units.value;
     $.get(url, function(data) {
@@ -134,8 +126,8 @@ function getData(lat, lon, units, api_key) {
         wind_direction.innerHTML = degToCompass(data.wind.deg);
         feels_like.innerHTML = data.main.feels_like+ unit_giver(units.value)[0];
         feel_desc.innerHTML = "Feels like" + data.weather[0].description + " " ;
-        sunrise.innerHTML = time_covert(data.sys.sunrise);
-        sunset.innerHTML = time_covert(data.sys.sunset);
+        sunrise.innerHTML = time_covert(data.sys.sunrise,data.timezone);
+        sunset.innerHTML =  time_covert(data.sys.sunset,data.timezone);
         pressure.innerHTML = data.main.pressure+" "+unit_giver(units.value)[2];
         humidity.innerHTML = data.main.humidity+"%";
         visibility.innerHTML = visibility_max_value(data.visibility) + "m <br>"+visibility_max(data.visibility);
@@ -144,7 +136,10 @@ function getData(lat, lon, units, api_key) {
     });
 }
 
-//if got more city
+//this function check how many city are available based on the user input
+//if there are more than one city it will display a menu to the user to select the city
+//if there is only one city it will get the weather data from the city provided
+//if there are no city it will display a popup to the user to notify that the city provided does not exist
 function MoreCity(elements) {
     citys = elements;
     menu.style.display = "block";
@@ -166,7 +161,8 @@ function MoreCity(elements) {
     return
 }
 
-//get weather data based on city provided
+//this is called when the user click on the submit button
+//city empty check is already done in the event listener
 
 function getWeather(first_time = true) {
     let url = "https://api.openweathermap.org/geo/1.0/direct?q=" + city_input.value + "&limit=5&appid="+ api_key +"&units="+ units.value;
