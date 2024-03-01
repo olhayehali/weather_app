@@ -78,33 +78,39 @@
         <div class="weather_basic" >
 
             <div class="weather_basic_location">
-                <h1 class="weather_basic_location_city" id="city" >minneapolis</h1>
+                <!-- name of the city -->
+                <h1 class="weather_basic_location_city" id="city" > </h1>
             </div>
 
             <div class="weather_basic_temperature">
-                <p class="weather_basic_temperature_value" id="temp" >30&deg;</p>
+                <!-- temperature -->
+                <p class="weather_basic_temperature_value" id="temp" ></p>
             </div>            
 
             <div class="weather_basic_description">
-                <img src="icon/02d@2x.png" alt="cloudy" id="icon" class="weather_basic__temperature_icon">
-                <p class="weather_basic_description_text" id="desc">broken cloud</p>
+                <!-- icon of the weather -->
+                <img src="" alt="cloudy" id="icon" class="weather_basic__temperature_icon">
+                <!-- description of the weather -->
+                <p class="weather_basic_description_text" id="desc"> </p>
             </div>
 
             <!-- high and low temp -->
             <div class="weather_basic_high_low">
                 <div class="weather_basic_high" >
                     <i class="fa-solid fa-temperature-arrow-up"></i>
-                    <h1 id="temp_max">H:50&deg;</h1>
+                    <!-- high temperature -->
+                    <h1 id="temp_max"></h1>
                 </div>
                 <div class="weather_basic_low" >
                     <i class="fa-solid fa-temperature-arrow-down"></i>
-                    <h1 id="temp_min">L:44&deg;</h1>
+                    <!-- low temperature -->
+                    <h1 id="temp_min"></h1>
                 </div>
             </div>
         </div>
         <!--   weather details -->
         <div class="weather_details">
-            
+                       
             <div class="weather_details_item_groupe">
                 <div class="weather_details_item">
                     <p class="weather_details_item_description">
@@ -112,10 +118,12 @@
                         Wind
                     </p>
                     <div class="weather_details_item--value" >
-                        <span id="wind_speed" id="wind_speed">3km/h</span>
+                        <!-- speed -->
+                        <span id="wind_speed" id="wind_speed"></span>
                         <br>
                         <i class="fas fa-compass"></i>
-                        <span id="wind_direction" id="wind_direction">170°</span>
+                        <!-- degree -->
+                        <span id="wind_direction" id="wind_direction"></span>
                     </div>
                 </div>
                 <div class="weather_details_item">
@@ -123,41 +131,48 @@
                         <i class="fas fa-thermometer-half"></i>
                         Feels Like
                     </p>
-                    <p class="weather_details_item--value" id="feels_like" >30&deg;</p>
-                    <p id="feel_desc">wind is making it feel cooler</p>
+                    <!-- feel like temperature -->
+                    <p class="weather_details_item--value" id="feels_like" ></p>
+                    <!-- feel like description -->
+                    <p id="feel_desc"></p>
                 </div>
                 <div class="weather_details_item">
                     <p class="weather_details_item_description" >
                         <i class="fas fa-sun"></i>
                         SunRise
                     </p>
-                    <h1 class="weather_details_item--value" id="sunrise">7:03AM</h1>
+                    <!-- sunrise time -->
+                    <h1 class="weather_details_item--value" id="sunrise"></h1>
                     <p class="weather_details_item_description">
                         <i class="fas fa-moon"></i>
                         SunSet
                     </p>
-                    <h1 class="weather_details_item--value" id="sunset">5:49PM</h1>
+                    <!-- sunset time -->
+                    <h1 class="weather_details_item--value" id="sunset"></h1>
                 </div>
                 <div class="weather_details_item">
                     <p class="weather_details_item_description">
                         <i class="fas fa-tachometer-alt"></i>
                         Pressure
                     </p>
-                    <h1 class="weather_details_item--value" id="pressure">1011 HPa </h1>
+                    <!--  pressure -->
+                    <h1 class="weather_details_item--value" id="pressure"> </h1>
                 </div>
                 <div class="weather_details_item">
                     <p class="weather_details_item_description">
                         <i class="fas fa-tint"></i>
                         Humidity
                     </p>
-                    <h1 class="weather_details_item--value" id="humidity">37%</h1>
+                    <!-- humididty -->
+                    <h1 class="weather_details_item--value" id="humidity"></h1>
                 </div>
                 <div class="weather_details_item">
                     <p class="weather_details_item_description">        
                         <i class="fas fa-eye"></i>
                         Visibility
                     </p>
-                    <h6 class="weather_details_item--value" id="visibility" >30&deg;</h6>    
+                    <!-- visibility -->
+                    <h6 class="weather_details_item--value" id="visibility" ></h6>    
                 </div>
             </div>
         </div>

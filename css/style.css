@@ -229,6 +229,7 @@ flex-direction: row;
 	justify-content: space-between;
 	font-weight: 500;
 	font-size: 24px;
+  width: 100%;
 }
 .weather_basic .weather_basic_high_low .weather_basic_high h1{
 	font-size: var(--text-size);
